@@ -1,125 +1,156 @@
 import 'package:flutter/material.dart';
 
+// 结构目录图: main->runAPP->MaterialApp->home/title...->Scaffold->appBar/body...
+// 第二层，可以额外进行定义处理的组件结构StatelessWidget；
+// class name extends StatelessWidget 定义好一个组件的类，然后再深度自定义内容
+// Center->child（单个子界面）->Container(设置一个容器)->(自定义容器内部的参数)->容器内新建child—>Text/OR MORE...
+
+
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp( //MaterialApp 用来包裹所有组件
+    home: Scaffold( // home设置的参数需要为Scaffold组件
+      appBar: AppBar(title: const Text('你好Flutter'),), //appBar，body组件为Scaffold函数定义
+      body: const ClipIMG(),
+    ),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+// 把每个组件都制作成一个类，然后再进行调用
+class MyBodyApp extends StatelessWidget{
+  const MyBodyApp({super.key});
+  final appCode =  const Center(
+    child:
+    Text('我是一个自定义组件',
+      textDirection: TextDirection.ltr,
+      style:  TextStyle(
+        color: Colors.red, // Color.formRGBO(244,244,123,1)
+        fontSize: 11.2,
+      ),),
+  );
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    // TODO: implement build
+    return appCode;
+  }
+}
+
+class TestWidget extends StatelessWidget{
+  const TestWidget({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return
+      Center(
+        child: Container( //Container为一个容器
+          alignment: Alignment.topLeft,
+          // 配置容器内组件的对齐方式
+          width: 100,
+          height: 200,
+          decoration:
+          BoxDecoration( //配置边框的颜色和宽度和圆角，以及容器的背景，boxshadow为配置阴影颜色以及淡开距离
+            color: Colors.red,
+            border: Border.all(color: Colors.black,width: 2),
+            borderRadius:BorderRadius.circular(5),
+            boxShadow: const [BoxShadow(color: Colors.yellow,blurRadius: 20.0)],
+          ),
+          // 设置背景填充颜色为红色
+          child: const Text('测试组件里面的文本，位于Container容器内', // Text组件
+            style: TextStyle( // Text内的style设置文本样式
+              color: Colors.black,
+              fontSize: 16,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          ),
+        ),
+      );
+  }
+}
+
+// 制作一个按钮
+class PushButton extends StatelessWidget{
+  const PushButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: Container(
+        alignment:Alignment.center,// 设置组件的对齐方式
+        decoration:BoxDecoration(
+          color: Colors.blue, // 设置背景颜色
+          borderRadius:BorderRadius.circular(20), // 设置圆角
+        ),
+        height: 80,
+        width: 160,
+        child:const Text(
+          '显示时间',
+          style: TextStyle(color: Colors.pink,fontSize:16),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+}
+
+// 圆形显示图片
+class WebIMG extends StatelessWidget{
+  const WebIMG({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: Container(
+        width: 150,
+        height: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(75), // 设置容器的一个圆角大小，设置为圆形
+          image: const DecorationImage(
+            image: NetworkImage('https://s2.loli.net/2023/09/12/kcprXWNbOvw9iKh.png'),
+            fit: BoxFit.cover, // fit为裁剪，常用cover
+          )
+        ),
+      ),
     );
   }
 }
+
+// 显示本地圆形图片，使用ClipOval组件
+// 图片需要放置在文件目录下，同时还需要修改项目的pubspec.yaml文件，修改内容如下:
+// assets:
+//   - images/img.jpeg
+class ClipIMG extends StatelessWidget{
+  const ClipIMG({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: ClipOval(
+        child: Image.asset('images/img.jpeg',
+          width: 120,
+          height: 120,
+          fit: BoxFit.cover),
+      ),
+    );
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
