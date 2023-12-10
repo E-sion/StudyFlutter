@@ -10,9 +10,16 @@ void main() {
   runApp(MaterialApp( //MaterialApp 用来包裹所有组件
     home: Scaffold( // home设置的参数需要为Scaffold组件
       appBar: AppBar(title: const Text('你好Flutter'),), //appBar，body组件为Scaffold函数定义
-      body: const ClipIMG(),
+      body:  const Column(
+        children: [
+          ClipIMG(),
+          PushButton(),
+          ListViewVertical()
+        ],
+      )
+      )
     ),
-  ));
+  );
 }
 
 // 把每个组件都制作成一个类，然后再进行调用
@@ -77,7 +84,6 @@ class PushButton extends StatelessWidget{
     // TODO: implement build
     return Center(
       child: Container(
-        alignment:Alignment.center,// 设置组件的对齐方式
         decoration:BoxDecoration(
           color: Colors.blue, // 设置背景颜色
           borderRadius:BorderRadius.circular(20), // 设置圆角
@@ -139,6 +145,25 @@ class ClipIMG extends StatelessWidget{
 
 }
 
+// 制作一个列表组件，垂直
+class ListViewVertical extends StatelessWidget{
+  const ListViewVertical({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      children: const [
+        ListTile(
+          leading: Icon(Icons.timer), // leading 会显示在最前面，内容可以是任意
+          title: Text('闹钟'),
+          trailing: Icon(Icons.chevron_right_rounded), // trailing 会显示在最末尾，内容也是随意的组件
+        )
+      ],
+    );
+  }
+
+}
 
 
 
