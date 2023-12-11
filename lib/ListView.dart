@@ -5,6 +5,24 @@ import 'package:flutter/material.dart';
 // class name extends StatelessWidget 定义好一个组件的类，然后再深度自定义内容
 // Center->child（单个子界面）->Container(设置一个容器)->(自定义容器内部的参数)->容器内新建child—>Text/OR MORE...
 
+List newsReports = [
+  {
+    "title": "动态列表展示",
+    "author": "使用ListView.build构建",
+    "imageUrl": "https://s2.loli.net/2023/09/12/kcprXWNbOvw9iKh.png"
+  },
+  {
+    "title": "震惊！幸运星居然要在2024年出续集",
+    "author": "小神经",
+    "imageUrl": "https://s2.loli.net/2023/09/12/kcprXWNbOvw9iKh.png"
+  },
+  {
+    "title": "震惊！今天居然是2023年",
+    "author": "匿名",
+    "imageUrl": "https://s2.loli.net/2023/09/12/kcprXWNbOvw9iKh.png"
+  },
+  // 可以根据需要添加更多新闻报道
+];
 
 void main() {
   runApp(MaterialApp( //MaterialApp 用来包裹所有组件
@@ -17,6 +35,8 @@ void main() {
               ListViewNew(),
               Divider(),
               ListViewH(),
+              Divider(),
+              ListViewD()
             ],
       )
       )
@@ -60,7 +80,7 @@ class ListViewNew extends StatelessWidget{
           child: ListView(
               children: [ ListTile(
                 leading: Image.network('https://s2.loli.net/2023/09/12/kcprXWNbOvw9iKh.png'),
-                title: const Text('2023年春晚名单！震惊！新闻测试'),
+                title: const Text('2023年春晚名单！震惊！'),
                 subtitle: const Text('小编也感到很震惊，快来看看春晚的名单都有哪些你认识的明星吧'),
               )
   ]
@@ -82,18 +102,17 @@ class ListViewH extends StatelessWidget{
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [ // 为了可以单独控制每个元素的大小，再嵌套一个容器
-          Container(
+          SizedBox(
             width: 100.0,
             child: Column(
               children: [ // 避免图片撕裂，可以再为图片嵌套一个Container，为该Container设置一个高度，以限制图片的高宽，避免撕裂
-                Container(
+                SizedBox(
                   width: 50,
                   child: Column(
                     children: <Widget>[
                       Image.network('https://s2.loli.net/2023/09/12/dJqvKwX8PUEOmrh.png',fit: BoxFit.cover),
                       const Text('横向列表'),],
                   ),
-
                 )
               ],
             ),
@@ -142,3 +161,27 @@ class ListViewH extends StatelessWidget{
 //     );
 //   }
 // }
+
+
+// 制作一个动态的列表显示函数
+class ListViewD extends StatelessWidget{
+  const ListViewD({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        height: 100,
+        child:
+            ListView.builder( // 使用listview的builder函数来实现动态的多列表展示，效果类似for循环
+            itemCount: newsReports.length, // itemCount类似for循环的次数
+            itemBuilder: (BuildContext context, int index){ //index为当前循环次数 {}内为需要展示的内容
+                return ListTile(
+                  leading: Image.network(newsReports[index]['imageUrl']),
+                  title: Text(newsReports[index]['title']),
+                  subtitle: Text(newsReports[index]['author']),
+                );
+              },
+          )
+    );
+  }
+}
