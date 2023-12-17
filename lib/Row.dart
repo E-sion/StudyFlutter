@@ -12,7 +12,7 @@ void main(){
               mainAxisAlignment: MainAxisAlignment.spaceBetween, // 设置对齐方式
               // MainAxisAlignment.start 从左边对齐，无空隙
               // MainAxisAlignment.spaceEvenly 居中对齐，中间有空隙
-              // MainAxisAlignment.spaceBetween 左右边无间距
+              // MainAxisAlignment.spaceBetween 在左边和右边，无间距
               // MainAxisAlignment.end 从右边对齐，无空隙
               // MainAxisAlignment.center 居中对齐，无空隙
 
