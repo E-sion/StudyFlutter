@@ -5,7 +5,7 @@ void main(){
   runApp(MaterialApp(
     home:Scaffold(
       appBar: AppBar(title: const Text("Row横线排列学习")),
-      body: Container(
+      body: SizedBox(
           height: double.infinity, //double.infinity 表示一个无穷大的数值，这里设置宽高无穷大的意思是让整个屏幕都占满本组件
           width: double.infinity,
           child: Row(

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
-      appBar: AppBar(title: Text('Push Button学习')),
-      body: PushButton(),
+      appBar: AppBar(title: const Text('Push Button学习')),
+      body: const PushButton(),
     ),
   ));
 }
@@ -35,7 +35,7 @@ class PushButton extends StatelessWidget {
               onPressed: () {},
               child: const Text('TextButton组件，默认背景透明并不带阴影。按下后，会有背景色')),
 
-          OutlinedButton(child: Text("边框按钮"), onPressed: () {}),
+          OutlinedButton(child: const Text("边框按钮"), onPressed: () {}),
 
           //IconButton 是一个可点击的Icon，不包括文字，默认没有背景，点击后会出现背景
           IconButton(
@@ -93,7 +93,7 @@ class PushButton extends StatelessWidget {
               },
               child: const Text('圆角')),
 
-          Container(
+          SizedBox(
             height: 80,
             child: ElevatedButton(
                 style: ButtonStyle(
@@ -117,7 +117,7 @@ class PushButton extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.all(20),
+                  margin: const EdgeInsets.all(20),
                   height: 50,
                   child: OutlinedButton(
                       style: ButtonStyle(

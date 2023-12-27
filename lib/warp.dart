@@ -57,13 +57,13 @@ class Search extends StatelessWidget {
         // 小标题
         Container(
           alignment: Alignment.topLeft,
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: const Text('热搜', style: TextStyle(fontSize: 18)),
         ),
         const Divider(), // 分割线
         // Warp 组件
         Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Wrap(
             spacing: 5,
             runSpacing: 10,
