@@ -48,7 +48,7 @@ class _TabBar extends State<tabBar> with SingleTickerProviderStateMixin {
           Icon(Icons.stacked_line_chart),
         ],
         bottom: TabBar(
-          controller: _tabController, // 配置tabcontroller
+          controller: _tabController, // 配置controller
           tabs: const [  // 以列表的形式来配置tab需要展示的内容
             Tab(child: Text('附近')),
             Tab(child: Text('主页')),
