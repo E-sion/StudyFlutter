@@ -50,7 +50,7 @@ class _TabBar extends State<tabBar> with SingleTickerProviderStateMixin {
         bottom: TabBar(
           controller: _tabController, // 配置tabcontroller
           tabs: const [  // 以列表的形式来配置tab需要展示的内容
-            Tab(cshild: Text('附近')),
+            Tab(child: Text('附近')),
             Tab(child: Text('主页')),
             Tab(child: Text('朋友')),
           ],),
