@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 // StatefulWidget 配置 with SingleTickerProviderStateMixin
 // 在方法里面新建一个TabController类型的变量 -> 重写initState方法并在方法里面配置变量的基本信息
+// body ——》 controller ，bottom -》controller ，有两块地方需要配置controller的值
+// 除了定义 bottom 里面的tab列表 ，还需要定义body里面的由TabBarView制作的列表。
 
 // Scaffold -> appbar -> bottom 按照固定格式配置TabController以及tab列表
 // Scaffold -> body 配置一个列表，列表元素会和bottom里面的tab列表相匹配，一样序号的会绑定在一起。

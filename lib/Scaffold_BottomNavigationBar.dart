@@ -35,8 +35,8 @@ class _Taps extends State<Taps> {
       home: Scaffold(
         appBar: AppBar(title: const Text("Scaffold内置组件BottonmNavigationBar（底部导航栏）学习")),
         bottomNavigationBar: BottomNavigationBar(
-            onTap: (index){ //onTap用于设置图标点击后发生的事件, index 可以是任意变量，()这个位置用于存放onTap获取到的信息
-              setState(() {
+            onTap: (index){ //onTap用于设置图标点击后发生的事件, index 可以是任意变量代表着当前点击的界面序号，()这个位置用于存放onTap获取到的信息
+              setState(() {     //setState为重中之重，必须把 _nowPage 赋值写入这里面，否则界面显示内容不会变化
                 _nowPage = index;
               });
             },
